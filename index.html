@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neelmani Pandey | CS Student & Competitive Programmer</title>
+    <meta name="description" content="Portfolio of Neelmani Pandey — Guardian @ LeetCode, Candidate Master @ Codeforces, and MERN Stack Developer.">
+    
+    <meta property="og:title" content="Neelmani Pandey - Portfolio">
+    <meta property="og:description" content="CSE Student, Competitive Programmer (Guardian/Candidate Master), and Full Stack Developer.">
+    <meta property="og:image" content="https://ui-avatars.com/api/?name=Neelmani+Pandey&background=00C9A7&color=fff&size=512">
+    <meta property="og:url" content="https://neelmanipandey.com">
+    <meta name="theme-color" content="#00C9A7">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --accent-primary: #00C9A7;
+            --accent-secondary: #8A2BE2;
+            --accent-gradient: linear-gradient(135deg, #00C9A7, #8A2BE2);
+            --bg-body: #050505;
+            --bg-sidebar: #0a0a0a;
+            --bg-card: #111111;
+            --bg-card-hover: #161616;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --border-color: #222222;
+            --sidebar-width: 300px;
+            --font-main: 'Outfit', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+            --lc-color: #FFA116;
+            --cf-color: #AA00AA;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        html { scroll-behavior: smooth; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-body); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+        /* --- SKELETON LOADING ANIMATION --- */
+        .skeleton {
+            background: linear-gradient(90deg, #111 25%, #222 50%, #111 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: 4px;
+            color: transparent !important; /* Hide text while loading */
+            display: inline-block;
+        }
+        @keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .profile-area { text-align: center; }
+        
+        .profile-img-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            padding: 3px;
+            background: var(--accent-gradient);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--bg-sidebar);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 4px solid var(--bg-sidebar);
+        }
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .profile-name { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .profile-role { 
+            font-family: var(--font-code); 
+            font-size: 0.85rem; 
+            color: var(--accent-primary);
+            background: rgba(0, 201, 167, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .nav-menu { margin-top: 2rem; }
+        .nav-item {
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-item:hover, .nav-item.active { background: rgba(255, 255, 255, 0.05); color: var(--text-main); }
+        .nav-item.active { border-left: 3px solid var(--accent-primary); }
+        .nav-item i { width: 20px; text-align: center; }
+
+        .sidebar-footer { text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+        .social-row { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
+        .social-link { font-size: 1.2rem; }
+        .social-link:hover { color: var(--accent-primary); transform: translateY(-3px); }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 { font-weight: 700; letter-spacing: -0.03em; }
+        .section-tag {
+            font-family: var(--font-code);
+            color: var(--accent-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .section-heading { font-size: 2.5rem; margin-bottom: 3rem; position: relative; }
+
+        /* --- HERO --- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.08) 0%, transparent 50%);
+        }
+
+        .hero-title { font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-title span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .typewriter {
+            font-family: var(--font-code);
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            min-height: 1.6em;
+        }
+        .cursor { display: inline-block; width: 2px; height: 1.2em; background: var(--accent-primary); animation: blink 1s infinite; vertical-align: middle; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+        .stat-box h4 { font-size: 2rem; color: var(--text-main); }
+        .stat-box p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* --- GITHUB DASHBOARD --- */
+        .github-dashboard { margin-top: 2rem; display: flex; flex-direction: column; gap: 2rem; }
+        .github-graph-container, .github-stats-container {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            text-align: center;
+        }
+        .graph-label {
+            font-family: var(--font-code);
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .github-graph-container img { width: 100%; max-width: 800px; filter: brightness(0.9); }
+        .github-stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+        /* --- MARQUEE --- */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 2rem 0;
+            background: var(--bg-body);
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .marquee-container::before, .marquee-container::after {
+            content: ""; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2;
+        }
+        .marquee-container::before { left: 0; background: linear-gradient(to right, var(--bg-body), transparent); }
+        .marquee-container::after { right: 0; background: linear-gradient(to left, var(--bg-body), transparent); }
+
+        .marquee-content { display: inline-block; animation: scroll 20s linear infinite; }
+        .marquee-content:hover { animation-play-state: paused; }
+        .tech-icon { font-size: 2rem; margin: 0 2rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; }
+        .tech-icon:hover { color: var(--accent-primary); transform: scale(1.1); }
+        .tech-icon span { font-size: 1.2rem; font-weight: 600; font-family: var(--font-main); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- BENTO GRID --- */
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .bento-card:hover { border-color: var(--accent-primary); transform: translateY(-5px); background: var(--bg-card-hover); }
+        .bento-card.highlight-lc { border-top: 4px solid var(--lc-color); }
+        .bento-card.highlight-cf { border-top: 4px solid var(--cf-color); }
+
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .rank-badge.guardian { background: rgba(255, 161, 22, 0.15); color: var(--lc-color); }
+        .rank-badge.master { background: rgba(170, 0, 170, 0.15); color: var(--cf-color); }
+
+        .cp-rating { font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1; }
+        .cp-detail { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; }
+        .cp-detail strong { color: var(--text-main); }
+        
+        .profile-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid var(--border-color);
+        }
+        .profile-btn:hover { background: var(--text-main); color: #000; }
+
+        /* --- PROJECTS --- */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+            height: 100%;
+            position: relative;
+        }
+        .project-card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; transition: opacity 0.4s ease; z-index: 1;
+            background-color: rgba(0,0,0,0.7); background-blend-mode: multiply;
+        }
+        .project-card:hover::before { opacity: 1; }
+        .project-card:hover { border-color: var(--accent-secondary); transform: translateY(-5px); }
+
+        .project-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; position: relative; z-index: 2; }
+        .project-title { font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .project-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+        .tech-pill { font-size: 0.75rem; font-family: var(--font-code); padding: 0.2rem 0.6rem; border-radius: 4px; background: #222; color: #ccc; }
+
+        .project-links a { margin-right: 1.2rem; font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+        .project-links a:hover { color: var(--accent-primary); }
+
+        /* --- TIMELINE --- */
+        .timeline { position: relative; border-left: 2px solid var(--border-color); margin-left: 1rem; padding-left: 2rem; }
+        .timeline-item { position: relative; margin-bottom: 2.5rem; }
+        .timeline-item::before {
+            content: ""; position: absolute; left: -2.6rem; top: 5px;
+            width: 1rem; height: 1rem; background: var(--bg-body);
+            border: 2px solid var(--accent-primary); border-radius: 50%;
+        }
+        .timeline-date { font-family: var(--font-code); color: var(--accent-primary); font-size: 0.85rem; margin-bottom: 0.5rem; display: block; }
+        .timeline-title { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-main); }
+        .timeline-desc { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- CERTIFICATIONS --- */
+        .cert-list { display: grid; gap: 1rem; }
+        .cert-item { display: flex; align-items: center; justify-content: space-between; background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); transition: 0.3s; }
+        .cert-item:hover { background: #1a1a1a; border-color: var(--accent-primary); }
+        .cert-info h4 { margin-bottom: 0.2rem; }
+        .cert-info span { color: var(--text-muted); font-size: 0.9rem; }
+        .cert-link { color: var(--accent-primary); font-size: 1.5rem; }
+
+        /* --- CONTACT --- */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 3rem; }
+        .contact-info p { margin-bottom: 1.5rem; color: var(--text-muted); }
+        
+        .form-group { margin-bottom: 1.5rem; }
+        input, textarea { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 1rem; color: var(--text-main); border-radius: 8px; font-family: var(--font-main); transition: 0.3s; }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent-primary); }
+        
+        .submit-btn { background: var(--accent-gradient); color: #fff; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s; display: inline-block; }
+        .submit-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        .floating-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: var(--accent-gradient); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.5rem; box-shadow: 0 10px 20px rgba(0, 201, 167, 0.4);
+            z-index: 999; animation: bounce 2s infinite;
+        }
+        .floating-btn:hover { transform: scale(1.1); }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+
+        /* --- MOBILE --- */
+        .mobile-toggle {
+            display: none; position: fixed; top: 20px; right: 20px; z-index: 200;
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            padding: 0.8rem; border-radius: 8px; color: var(--text-main); cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            :root { --sidebar-width: 0px; }
+            .sidebar { transform: translateX(-100%); transition: 0.3s; width: 260px; }
+            .sidebar.active { transform: translateX(0); box-shadow: 10px 0 30px rgba(0,0,0,0.5); }
+            .main-content { margin-left: 0; width: 100%; }
+            .mobile-toggle { display: block; }
+            .hero-title { font-size: 3rem; }
+            .hero-stats { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .section-container { padding: 4rem 1.5rem; }
+            .github-stats-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="mobile-toggle" id="menuBtn"><i class="fas fa-bars"></i></button>
+
+    <a href="mailto:neelmani.pandey89@gmail.com" class="floating-btn" title="Email Me">
+        <i class="fas fa-envelope"></i>
+    </a>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="profile-area">
+            <div class="profile-img-container">
+                <div class="profile-img">
+                    <img src="profile.png" alt="Neelmani Pandey" onerror="this.src='https://ui-avatars.com/api/?name=Neelmani+Pandey&background=0D1117&color=00C9A7&size=256'">
+                </div>
+            </div>
+            <h2 class="profile-name">Neelmani Pandey</h2>
+            <span class="profile-role">CSE Student '27</span>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#home" class="nav-item active"><i class="fas fa-home"></i> Home</a>
+            <a href="#cp" class="nav-item"><i class="fas fa-chess-king"></i> Competitive</a>
+            <a href="#projects" class="nav-item"><i class="fas fa-code"></i> Projects</a>
+            <a href="#timeline" class="nav-item"><i class="fas fa-history"></i> Journey</a>
+            <a href="#skills" class="nav-item"><i class="fas fa-layer-group"></i> Skills</a>
+            <a href="#certifications" class="nav-item"><i class="fas fa-certificate"></i> Certs</a>
+            <a href="#contact" class="nav-item"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="social-row">
+                <a href="https://github.com/neelmanip-999" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/neelmani-pandey-93499b223/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:neelmani.pandey89@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Neelmani Pandey</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <section id="home" class="section-container">
+            <span class="section-tag">&lt;Hello_World /&gt;</span>
+            <h1 class="hero-title">I craft logic,<br><span>solve problems</span> &<br>build systems.</h1>
+            <div class="typewriter">
+                I am <span id="typing-text"></span><span class="cursor"></span>
+            </div>
+            
+            <div style="display: flex; gap: 1rem;">
+                <a href="#projects" class="submit-btn">View My Work</a>
+                <a href="https://drive.google.com/file/d/1AKc_s89CzQvZCXmWwgwLxMwnbZzBFpUd/view?usp=sharing" target="_blank" class="submit-btn" style="background: transparent; border: 1px solid var(--accent-primary); color: var(--accent-primary);">Resume</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <h4>9.04</h4>
+                    <p>CPI @ GLA University</p>
+                </div>
+                <div class="stat-box">
+                    <h4 id="hero-lc-solved" class="skeleton" style="min-width: 80px; min-height: 40px; display:block;"></h4>
+                    <p>DSA Problems Solved</p>
+                </div>
+                <div class="stat-box">
+                    <h4>Top 1%</h4>
+                    <p>Global Rank @ LeetCode</p>
+                </div>
+            </div>
+
+            <div class="github-dashboard">
+                <h2 style="margin-bottom: -1rem;">Open Source & Contributions</h2>
+                <div class="github-graph-container">
+                    <h4 class="graph-label">GitHub Contribution Graph</h4>
+                    <img src="https://ghchart.rshah.org/00C9A7/neelmanip-999" alt="Neelmani's Github Chart">
+                </div>
+                <div class="github-stats-row">
+                    <div class="github-stats-container">
+                         <h4 class="graph-label">Overall Statistics</h4>
+                         <img src="https://github-readme-stats.vercel.app/api?username=neelmanip-999&show_icons=true&theme=dark&bg_color=111111&hide_border=true&count_private=true&title_color=00C9A7&text_color=ffffff&icon_color=8A2BE2" alt="Github Stats" style="width:100%;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<p style=\'color:#666; font-style:italic;\'>Stats server currently overloaded. Check back later.</p>')">
+                    </div>
+                    <div class="github-stats-container">
+                        <h4 class="graph-label">Top Languages</h4>
+                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=neelmanip-999&layout=compact&theme=dark&bg_color=111111&hide_border=true&title_color=00C9A7&text_color=ffffff" alt="Top Languages" style="width:100%;" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<p style=\'color:#666; font-style:italic;\'>Language stats server busy.</p>')">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cp" class="section-container">
+            <span class="section-tag">&lt;Rankings /&gt;</span>
+            <h2 class="section-heading">Competitive Programming</h2>
+            
+            <div class="bento-grid">
+                <div class="bento-card highlight-lc">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:start;">
+                            <span class="rank-badge guardian"><i class="fas fa-shield-alt"></i> Guardian</span>
+                            <i class="fas fa-code" style="color:#555; font-size:1.5rem;"></i>
+                        </div>
+                        <h3 style="margin-bottom:0.2rem;">LeetCode</h3>
+                        <div class="cp-rating skeleton" id="lc-rating-display" style="min-height: 48px; width: 150px; display:block;"></div>
+                        <div style="margin-top: 1.5rem;">
+                            <div class="cp-detail"><span>Solved</span> <strong id="lc-total-solved">800+</strong></div>
+                            <div class="cp-detail"><span>Global Rank</span> <strong>Top 1%</strong></div>
+                            <div class="cp-detail"><span>Best Rank</span> <strong>183 / 30,000</strong></div>
+                        </div>
+                    </div>
+                    <a href="https://leetcode.com/u/neelmani_p999/" target="_blank" class="profile-btn">Visit Profile <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="bento-card highlight-cf">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:start;">
+                            <span class="rank-badge master"><i class="fas fa-crown"></i> Candidate Master</span>
+                            <i class="fas fa-terminal" style="color:#555; font-size:1.5rem;"></i>
+                        </div>
+                        <h3 style="margin-bottom:0.2rem;">Codeforces</h3>
+                        <div class="cp-rating skeleton" id="cf-rating-display" style="min-height: 48px; width: 150px; display:block;"></div>
+                        <div style="margin-top: 1.5rem;">
+                            <div class="cp-detail"><span>Solved</span> <strong>300+</strong></div>
+                            <div class="cp-detail"><span>Contests</span> <strong>60+</strong></div>
+                            <div class="cp-detail"><span>Best Rank</span> <strong>110 / 17,217</strong></div>
+                        </div>
+                    </div>
+                    <a href="https://codeforces.com/profile/NeelmaniPandey09" target="_blank" class="profile-btn">Visit Profile <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-container">
+            <span class="section-tag">&lt;Portfolio /&gt;</span>
+            <h2 class="section-heading">Featured Projects</h2>
+            <div class="bento-grid">
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">HealthBridge AI</h3>
+                        <p class="project-desc">AI-powered healthcare platform for disease prediction and real-time doctor consultation via WebRTC.</p>
+                        <div class="tech-stack"><span class="tech-pill">MERN</span><span class="tech-pill">Python ML</span><span class="tech-pill">WebRTC</span></div>
+                        <div class="project-links">
+                            <a href="https://health-bridge-ai-healthcare.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/neelmanip-999/HealthBridge-AI-Healthcare" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Job Portal</h3>
+                        <p class="project-desc">Comprehensive job board with recruiter dashboards, resume parsing, and advanced filtering.</p>
+                        <div class="tech-stack"><span class="tech-pill">React</span><span class="tech-pill">Redux</span><span class="tech-pill">Node.js</span></div>
+                        <div class="project-links">
+                            <a href="https://job-portal-mern-sage.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/neelmanip-999/Job-Portal-MERN" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Real-time Chat App</h3>
+                        <p class="project-desc">Instant messaging application with online status indicators and JWT authentication.</p>
+                        <div class="tech-stack"><span class="tech-pill">Socket.io</span><span class="tech-pill">Zustand</span><span class="tech-pill">Tailwind</span></div>
+                        <div class="project-links"><a href="https://github.com/neelmanip-999/MERN-ChatApp" target="_blank"><i class="fab fa-github"></i> Code</a></div>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Numerology WebApp</h3>
+                        <p class="project-desc">Chaldean numerology calculator combining ancient logic with modern algorithms.</p>
+                        <div class="tech-stack"><span class="tech-pill">JavaScript</span><span class="tech-pill">Agile</span></div>
+                        <div class="project-links"><a href="https://github.com/neelmanip-999/Numerology-Chaldean-Webapp" target="_blank"><i class="fab fa-github"></i> Code</a></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="timeline" class="section-container">
+            <span class="section-tag">&lt;History /&gt;</span>
+            <h2 class="section-heading">My Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">2025 - Present</span>
+                    <h3 class="timeline-title">Guardian & Candidate Master</h3>
+                    <p class="timeline-desc">Reached top 1% on LeetCode (2222 Rating) and Candidate Master on Codeforces (1900 Rating).</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">2024</span>
+                    <h3 class="timeline-title">MERN Stack Mastery</h3>
+                    <p class="timeline-desc">Built 5+ production-ready applications including HealthBridge and Job Portal. Deep dived into Backend architecture.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">2023</span>
+                    <h3 class="timeline-title">Started B.Tech CSE</h3>
+                    <p class="timeline-desc">Joined GLA University with a focus on Computer Science. Maintained a 9.04 CPI.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-container">
+            <span class="section-tag">&lt;Arsenal /&gt;</span>
+            <h2 class="section-heading">Tech Stack</h2>
+        </section>
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <div class="tech-icon"><i class="fab fa-js" style="color:#f7df1e"></i> <span>JavaScript</span></div>
+                <div class="tech-icon"><i class="fab fa-react" style="color:#61dafb"></i> <span>React</span></div>
+                <div class="tech-icon"><i class="fab fa-node" style="color:#68a063"></i> <span>Node.js</span></div>
+                <div class="tech-icon"><i class="fas fa-database" style="color:#4db33d"></i> <span>MongoDB</span></div>
+                <div class="tech-icon"><i class="fab fa-python" style="color:#3776ab"></i> <span>Python</span></div>
+                <div class="tech-icon"><i class="fab fa-aws" style="color:#ff9900"></i> <span>AWS</span></div>
+                <div class="tech-icon"><i class="fab fa-git-alt" style="color:#f1502f"></i> <span>Git</span></div>
+                <div class="tech-icon"><i class="fas fa-brain" style="color:#ff6b6b"></i> <span>Machine Learning</span></div>
+                <div class="tech-icon"><i class="fab fa-js" style="color:#f7df1e"></i> <span>JavaScript</span></div>
+                <div class="tech-icon"><i class="fab fa-react" style="color:#61dafb"></i> <span>React</span></div>
+                <div class="tech-icon"><i class="fab fa-node" style="color:#68a063"></i> <span>Node.js</span></div>
+                <div class="tech-icon"><i class="fas fa-database" style="color:#4db33d"></i> <span>MongoDB</span></div>
+                <div class="tech-icon"><i class="fab fa-python" style="color:#3776ab"></i> <span>Python</span></div>
+                <div class="tech-icon"><i class="fab fa-aws" style="color:#ff9900"></i> <span>AWS</span></div>
+                <div class="tech-icon"><i class="fab fa-git-alt" style="color:#f1502f"></i> <span>Git</span></div>
+                <div class="tech-icon"><i class="fas fa-brain" style="color:#ff6b6b"></i> <span>Machine Learning</span></div>
+            </div>
+        </div>
+
+        <section id="certifications" class="section-container">
+            <span class="section-tag">&lt;Credentials /&gt;</span>
+            <h2 class="section-heading">Certifications</h2>
+            <div class="cert-list">
+                <div class="cert-item">
+                    <div class="cert-info"><h4>Atlassian Agile Project Management</h4><span>Professional Certificate</span></div>
+                    <a href="https://drive.google.com/file/d/1bCCExmTndPH6dZ_mIn9Dp174ts0kqesU/view" target="_blank" class="cert-link"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-info"><h4>Oracle Cloud Infrastructure AI 2025</h4><span>Foundations Associate</span></div>
+                    <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=EB82692A93FE30B771ACE1D0EEA5525FF4906B872B2DA62A1C15F96304D4D361" target="_blank" class="cert-link"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-info"><h4>Python Machine Learning</h4><span>Coding Blocks</span></div>
+                    <a href="https://drive.google.com/file/d/1AQ4TnDInASVC30aOcYNCG8_ZGXSdXZVH/view" target="_blank" class="cert-link"><i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-container">
+            <span class="section-tag">&lt;Connect /&gt;</span>
+            <h2 class="section-heading">Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>I am currently looking for SDE Internships. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                    <p><i class="fas fa-map-marker-alt" style="color:var(--accent-primary)"></i> Mathura, India</p>
+                    <p><i class="fas fa-envelope" style="color:var(--accent-primary)"></i> neelmani.pandey89@gmail.com</p>
+                </div>
+                <form action="https://formspree.io/f/xdanbwdp" method="POST">
+                    <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                    <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
+                    <div class="form-group"><textarea name="message" rows="5" placeholder="Message" required></textarea></div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Typing Effect
+        const words = ["a MERN Stack Developer.", "a Competitive Programmer.", "an AI Enthusiast.", "a Problem Solver."];
+        let i = 0; let timer;
+        function typeWriter() {
+            const heading = document.getElementById("typing-text");
+            const word = words[i];
+            const current = heading.textContent;
+            if (!this.isDeleting && current !== word) {
+                heading.textContent = word.substring(0, current.length + 1);
+                timer = setTimeout(typeWriter, 100);
+            } else if (!this.isDeleting && current === word) {
+                this.isDeleting = true;
+                timer = setTimeout(typeWriter, 2000);
+            } else if (this.isDeleting && current !== "") {
+                heading.textContent = word.substring(0, current.length - 1);
+                timer = setTimeout(typeWriter, 50);
+            } else {
+                this.isDeleting = false;
+                i = (i + 1) % words.length;
+                timer = setTimeout(typeWriter, 500);
+            }
+        }
+        typeWriter();
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            const icon = sidebar.classList.contains('active') ? 'fa-times' : 'fa-bars';
+            menuBtn.innerHTML = `<i class="fas ${icon}"></i>`;
+        });
+
+        // Active Link Highlighter
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-item');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) { current = section.getAttribute('id'); }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+            });
+        });
+
+        // Fetch Stats with Skeleton Handling
+        async function fetchStats() {
+            // Helper to update text and remove skeleton class
+            const updateStat = (id, text) => {
+                const el = document.getElementById(id);
+                if(el) {
+                    el.innerText = text;
+                    el.classList.remove('skeleton'); // REMOVE ANIMATION
+                    el.style.color = "var(--text-main)"; // Make text visible
+                }
+            };
+
+            // Codeforces
+            try {
+                const cfResponse = await fetch('https://codeforces.com/api/user.info?handles=NeelmaniPandey09');
+                const cfData = await cfResponse.json();
+                if(cfData.status === 'OK') {
+                    updateStat('cf-rating-display', cfData.result[0].rating);
+                }
+            } catch (e) { console.log('CF Error'); }
+
+            // LeetCode
+            try {
+                const lcResponse = await fetch('https://leetcode-stats-api.herokuapp.com/neelmani_p999');
+                const lcData = await lcResponse.json();
+                if(lcData.status === 'success') {
+                    updateStat('lc-total-solved', lcData.totalSolved);
+                    updateStat('hero-lc-solved', lcData.totalSolved + "+");
+                    updateStat('lc-rating-display', '2222'); // API sometimes missing rating, keeping fallback
+                }
+            } catch (e) { console.log('LC Error'); }
+        }
+        fetchStats();
+    </script>
+</body>
+</html>
