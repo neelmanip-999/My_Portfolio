@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neelmani Pandey — Software Engineer & Competitive Programmer</title>
+<meta name="description" content="Neelmani Pandey — final-year B.Tech CSE student, Codeforces Candidate Master, LeetCode Guardian, Amazon ML Summer School 2026 scholar and Infosys Specialist Programmer (HackWithInfy 2026).">
+<meta name="theme-color" content="#07070d">
+<meta property="og:title" content="Neelmani Pandey — Software Engineer & Competitive Programmer">
+<meta property="og:description" content="Scalable backends, real-time systems and applied AI. Codeforces CM · LeetCode Guardian · Amazon ML Summer School ’26.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b5cf6'/%3E%3Ctext x='32' y='42' font-size='28' font-family='monospace' font-weight='700' text-anchor='middle' fill='white'%3ENP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+
+<style>
+/* ───────── TOKENS ───────── */
+:root{
+  --bg:#07070d; --bg2:#0c0c15; --card:#10101b; --card2:#171726;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.15);
+  --text:#ececf6; --muted:#9a9ab3; --dim:#6d6d88;
+  --accent:#8b5cf6; --accent2:#22d3ee; --good:#34d399; --gold:#fbbf24;
+  --grad:linear-gradient(120deg,#8b5cf6 0%,#6366f1 45%,#22d3ee 100%);
+  --radius:18px; --shadow:0 24px 60px -24px rgba(139,92,246,.45);
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+[data-theme="light"]{
+  --bg:#f6f6fb; --bg2:#ffffff; --card:#ffffff; --card2:#f0f0f8;
+  --line:rgba(20,20,50,.09); --line2:rgba(20,20,50,.17);
+  --text:#14142b; --muted:#56566f; --dim:#8a8aa3;
+  --accent:#7c3aed; --accent2:#0891b2; --good:#059669; --gold:#b45309;
+  --shadow:0 24px 50px -26px rgba(124,58,237,.35);
+}
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+
+/* ───────── BASE ───────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;background:var(--bg)}
+body{font-family:var(--sans);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+ul{list-style:none}
+button{font:inherit;color:inherit;cursor:pointer}
+.container{width:min(92%,1160px);margin-inline:auto}
+section{padding:96px 0;position:relative}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent2);outline-offset:3px;border-radius:6px}
+
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(900px 520px at 12% -8%,rgba(139,92,246,.24),transparent 60%),
+  radial-gradient(760px 520px at 100% 8%,rgba(34,211,238,.14),transparent 60%),var(--bg)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.55;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 15%,transparent 72%);
+  mask-image:radial-gradient(ellipse at 50% 0%,#000 15%,transparent 72%)}
+
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--grad);z-index:70}
+
+/* ───────── NAV ───────── */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--bg) 72%,transparent);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{font:700 20px var(--mono);letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:4px}
+.links a{font:500 13px var(--mono);color:var(--muted);padding:8px 12px;border-radius:8px;transition:.2s}
+.links a:hover,.links a.active{color:var(--text);background:var(--card2)}
+.links a.active{color:var(--accent2)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;font-size:16px;transition:.2s}
+.icon-btn:hover{border-color:var(--accent)}
+.menu-btn{display:none}
+
+/* ───────── BUTTONS / PILLS / CHIPS ───────── */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:12px;font:600 14px var(--sans);border:1px solid var(--line2);background:var(--card);transition:.25s}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn-primary{background:var(--grad);border-color:transparent;color:#fff;box-shadow:var(--shadow)}
+.btn-primary:hover{box-shadow:0 26px 60px -20px rgba(139,92,246,.7)}
+.btn-sm{padding:9px 16px;font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--line2);border-radius:999px;font:500 12px var(--mono);color:var(--muted);background:var(--card)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.chip{display:inline-block;font:500 12.5px var(--mono);padding:6px 11px;border:1px solid var(--line);border-radius:8px;background:var(--card2);color:var(--muted);transition:.25s}
+.chip:hover{color:var(--text);border-color:var(--accent);transform:translateY(-2px)}
+.chip.hot{color:var(--text);border-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.verdict{font:700 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;padding:6px 11px;border-radius:7px;border:1px solid;white-space:nowrap;text-align:center}
+.v-ac{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,transparent);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.v-gold{color:var(--gold);border-color:color-mix(in srgb,var(--gold) 45%,transparent);background:color-mix(in srgb,var(--gold) 10%,transparent)}
+.v-vio{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 50%,transparent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.v-cy{color:var(--accent2);border-color:color-mix(in srgb,var(--accent2) 50%,transparent);background:color-mix(in srgb,var(--accent2) 10%,transparent)}
+
+/* ───────── CARDS ───────── */
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;overflow:hidden;transition:transform .3s,border-color .3s}
+.card::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--x,50%) var(--y,0%),color-mix(in srgb,var(--accent) 16%,transparent),transparent 45%)}
+.card:hover{border-color:var(--line2);transform:translateY(-3px)}
+.card:hover::before{opacity:1}
+
+.sec-head{margin-bottom:48px;max-width:720px}
+.eyebrow{font:500 13px var(--mono);color:var(--accent2);display:block;margin-bottom:10px}
+h2{font:700 clamp(1.8rem,4vw,2.7rem)/1.15 var(--mono);letter-spacing:-.025em}
+h3{font:700 1.15rem/1.3 var(--sans)}
+.sub{color:var(--muted);margin-top:12px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease var(--d,0s),transform .8s ease var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+
+/* ───────── HERO ───────── */
+.hero{padding:136px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hello{font:500 15px var(--mono);color:var(--muted);margin:22px 0 6px}
+h1{font:700 clamp(2.5rem,6.4vw,4.6rem)/1.04 var(--mono);letter-spacing:-.04em}
+.role{font:500 clamp(1.05rem,2.3vw,1.4rem) var(--mono);color:var(--accent2);margin:16px 0 20px;min-height:1.7em}
+.role .prompt{color:var(--accent)}
+.caret{display:inline-block;width:2px;height:1.15em;background:var(--accent2);margin-left:3px;vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{color:var(--muted);font-size:1.06rem;max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 22px}
+.socials{display:flex;flex-wrap:wrap;gap:8px}
+.socials a{font:500 12.5px var(--mono);color:var(--muted);padding:7px 12px;border:1px solid var(--line);border-radius:8px;transition:.2s}
+.socials a:hover{color:var(--text);border-color:var(--accent);transform:translateY(-2px)}
+
+.avatar{position:relative;width:min(100%,340px);aspect-ratio:4/5;margin-inline:auto}
+.avatar::before{content:"";position:absolute;inset:-34px;background:var(--grad);filter:blur(64px);opacity:.3;border-radius:50%;z-index:-1}
+.ring{position:absolute;inset:-3px;border-radius:30px;background:conic-gradient(from var(--ang),#8b5cf6,#22d3ee,#8b5cf6);animation:spin 7s linear infinite}
+@keyframes spin{to{--ang:360deg}}
+.frame{position:absolute;inset:0;border-radius:27px;overflow:hidden;background:var(--card)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.initials{position:absolute;inset:0;display:grid;place-items:center;font:700 96px var(--mono);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.float{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:12px;font:600 12px var(--mono);
+  background:color-mix(in srgb,var(--card) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line2);box-shadow:var(--shadow);animation:bob 5s ease-in-out infinite;white-space:nowrap}
+.float b{color:var(--good)}
+.f1{top:7%;left:-16%}.f2{bottom:24%;right:-14%;animation-delay:-2s}.f3{bottom:-3%;left:4%;animation-delay:-3.4s}
+@keyframes bob{50%{transform:translateY(-9px)}}
+
+.stats{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.stat b{display:block;font:700 clamp(1.7rem,3.5vw,2.5rem)/1.1 var(--mono);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font:500 12px var(--mono);color:var(--muted)}
+
+.chart-card{margin-top:16px;padding:22px 22px 12px}
+.chart-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center;margin-bottom:8px}
+.chart-head h3{font:700 15px var(--mono)}
+.kvs{display:flex;gap:10px;flex-wrap:wrap}
+.kv{font:500 12px var(--mono);color:var(--muted);padding:5px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card2)}
+.kv b{color:var(--text)}
+#chart{width:100%;height:auto;display:block;color:var(--text)}
+.ax{fill:var(--dim);font:10px var(--mono)}
+.pk{fill:var(--gold);font:700 11px var(--mono)}
+.area{opacity:0;transition:opacity 1.2s ease .8s}
+.area.show{opacity:1}
+.cap{font:400 11.5px var(--mono);color:var(--dim);padding:2px 0 8px}
+
+/* ───────── ABOUT ───────── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+.term{padding:0;background:#0a0a12}
+[data-theme="light"] .term{background:#14142b;color:#ececf6}
+.term-bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.08);font:500 12px var(--mono);color:#8c8ca6}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}
+.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar span{margin-left:10px}
+.term pre{padding:22px;font:400 13.5px/1.75 var(--mono);overflow-x:auto;color:#d6d6ea}
+.t-c{color:#22d3ee}.t-k{color:#a78bfa}.t-s{color:#34d399}.t-n{color:#fbbf24}
+.about-copy p{color:var(--muted);margin-bottom:16px}
+.about-copy p strong{color:var(--text);font-weight:600}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.fact{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+.fact small{display:block;font:500 11px var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+.fact span{font-weight:600;font-size:14px}
+
+/* ───────── SKILLS ───────── */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.span2{grid-column:span 2}
+.sk-ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font:700 15px var(--mono);color:#fff;background:var(--grad);margin-bottom:16px}
+.skill h3{margin-bottom:14px}
+
+/* ───────── PROFILES ───────── */
+.prof .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:18px}
+.prof .handle{font:500 12.5px var(--mono);color:var(--muted)}
+.big{font:700 2.6rem/1 var(--mono);margin:6px 0 4px}
+.lc .big{color:var(--gold)}.cf .big{color:var(--accent)}.gh .big{color:var(--accent2)}
+.mini{display:flex;gap:22px;margin:18px 0;flex-wrap:wrap}
+.mini div small{display:block;font:500 11px var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.05em}
+.mini div b{font:600 15px var(--sans)}
+.bar{height:8px;border-radius:99px;background:var(--card2);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#f59e0b,#fbbf24);transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.scale{position:relative;height:10px;border-radius:99px;
+  background:linear-gradient(90deg,#808080 0 16.67%,#008000 16.67% 25%,#03a89e 25% 33.33%,#2f5bff 33.33% 45.83%,#b100b1 45.83% 54.17%,#ff8c00 54.17% 66.67%,#ff2d2d 66.67% 100%);opacity:.9}
+.scale i{position:absolute;top:50%;left:50.17%;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #b100b1;transform:translate(-50%,-50%);box-shadow:0 0 0 5px rgba(177,0,177,.25)}
+.scale-lbl{display:flex;justify-content:space-between;font:400 10px var(--mono);color:var(--dim);margin-top:8px}
+.link{display:inline-flex;gap:6px;margin-top:18px;font:600 13px var(--mono);color:var(--accent2)}
+.link:hover{gap:10px}
+.case-btn{margin-top:16px}
+.learning{margin-top:24px}
+.learning h3{margin-bottom:12px}
+.notes{margin-top:54px}
+.note-card{display:flex;flex-direction:column}
+.note-card p{color:var(--muted);font-size:.92rem;margin:10px 0}
+.referral{margin-bottom:24px;border-color:color-mix(in srgb,var(--accent) 45%,transparent);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.referral p{color:var(--muted);font-size:.93rem;margin-top:4px}
+.referral-actions{display:flex;gap:10px;flex-wrap:wrap}
+select{font:400 15px var(--sans);color:var(--text);padding:13px 15px;border-radius:12px;border:1px solid var(--line2);background:var(--card2);width:100%}
+.modal-backdrop{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.68);display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-backdrop.open{opacity:1;pointer-events:auto}
+.modal{width:min(680px,100%);max-height:min(760px,90vh);overflow:auto;background:var(--card);border:1px solid var(--line2);border-radius:20px;padding:28px;box-shadow:0 30px 90px rgba(0,0,0,.45);transform:translateY(14px);transition:transform .25s}
+.modal-backdrop.open .modal{transform:none}
+.modal-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:18px}
+.modal h2{font-size:clamp(1.45rem,3vw,2rem)}
+.modal h3{margin:20px 0 7px;color:var(--accent2);font:600 13px var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.modal p,.modal li{color:var(--muted);font-size:.95rem}
+.modal ul{list-style:disc;padding-left:20px}
+.architecture{margin-top:20px;border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card2)}
+.architecture summary{cursor:pointer;color:var(--accent2);font:600 12px var(--mono)}
+.architecture svg{display:block;width:100%;height:auto;margin-top:12px}
+.architecture rect{fill:var(--card);stroke:var(--accent);rx:8}
+.architecture text{fill:var(--text);font:12px var(--mono)}
+.architecture path{stroke:var(--accent2);stroke-width:2;fill:none;marker-end:url(#arrow)}
+.close-btn{border:1px solid var(--line);background:var(--card2);border-radius:9px;width:34px;height:34px}
+.palette{width:min(520px,100%);margin-top:12vh}
+.palette input{margin-bottom:12px}
+.palette a{display:block;padding:11px 12px;border-radius:9px;color:var(--muted);font:500 13px var(--mono)}
+.palette a:hover{background:var(--card2);color:var(--text)}
+.key-hint{font:500 11px var(--mono);color:var(--dim);margin-left:auto}
+
+/* ───────── EXPERIENCE ───────── */
+.exp{display:grid;grid-template-columns:200px 1fr;gap:28px}
+.exp-meta small{display:block;font:500 12px var(--mono);color:var(--accent2)}
+.exp-meta span{font:500 12px var(--mono);color:var(--dim)}
+.exp ul{margin:14px 0 18px}
+.exp li{position:relative;padding-left:20px;color:var(--muted);margin-bottom:10px}
+.exp li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+
+/* ───────── PROJECTS ───────── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.proj{padding:0;display:flex;flex-direction:column}
+.win{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--card2);font:500 11.5px var(--mono);color:var(--dim)}
+.win i{width:10px;height:10px;border-radius:50%;background:var(--line2)}
+.win span{margin-left:8px}
+.proj-body{padding:26px;display:flex;flex-direction:column;flex:1}
+.proj-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:6px}
+.proj h3{font:700 1.3rem var(--mono);letter-spacing:-.02em}
+.proj .tag{color:var(--accent2);font:500 12.5px var(--mono);margin-bottom:14px}
+.proj ul{margin:14px 0 18px}
+.proj li{position:relative;padding-left:20px;color:var(--muted);font-size:.95rem;margin-bottom:10px}
+.proj li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+.metrics{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.metric{font:600 12px var(--mono);padding:6px 11px;border-radius:8px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+.proj-foot{margin-top:auto;display:flex;gap:10px;padding-top:6px}
+
+/* ───────── ACHIEVEMENTS & CERTS ───────── */
+.ach{display:grid;grid-template-columns:140px 1fr auto;gap:22px;align-items:center;padding:20px 24px;margin-bottom:12px}
+.ach p{color:var(--muted);font-size:.95rem}
+.ach .when{font:500 12px var(--mono);color:var(--dim)}
+.sub-h{font:700 1.15rem var(--mono);margin:56px 0 20px}
+.cert{display:block}
+.cert small{font:500 11.5px var(--mono);color:var(--accent2);text-transform:uppercase;letter-spacing:.06em}
+.cert h3{margin:10px 0 18px;font-size:1.02rem}
+.cert .link{margin-top:0}
+
+/* ───────── CONTACT ───────── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.mail{display:inline-block;font:700 clamp(1.05rem,2.4vw,1.5rem) var(--mono);margin:18px 0 26px;word-break:break-all}
+form{display:grid;gap:14px}
+label{font:500 12px var(--mono);color:var(--muted);display:grid;gap:7px}
+input,textarea{font:400 15px var(--sans);color:var(--text);padding:13px 15px;border-radius:12px;border:1px solid var(--line2);background:var(--card2);width:100%;transition:.2s}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+textarea{min-height:130px;resize:vertical}
+.form-status{min-height:1.5em;color:var(--muted);font-size:.85rem}
+.form-status.success{color:var(--good)}
+.form-status.error{color:#fb7185}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim);font:400 12.5px var(--mono)}
+footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.to-top{position:fixed;right:22px;bottom:22px;z-index:55;opacity:0;pointer-events:none;transition:.3s}
+.to-top.show{opacity:1;pointer-events:auto}
+
+/* ───────── RESPONSIVE ───────── */
+@media (max-width:980px){
+  .hero-grid,.about-grid,.contact-grid,.grid-2{grid-template-columns:1fr}
+  .hero-visual{order:-1;margin-bottom:14px}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .span2{grid-column:span 2}
+  .stats{grid-template-columns:1fr 1fr}
+  .f1{left:-4%}.f2{right:-4%}
+  .exp{grid-template-columns:1fr;gap:10px}
+}
+@media (max-width:920px){
+  .menu-btn{display:grid}
+  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:12px 4%;background:var(--bg2);border-bottom:1px solid var(--line);display:none}
+  .links.open{display:flex}
+}
+@media (max-width:640px){
+  section{padding:72px 0}
+  .grid-3{grid-template-columns:1fr}.span2{grid-column:auto}
+  .ach{grid-template-columns:1fr;gap:10px}
+  .facts{grid-template-columns:1fr}
+  .f3{display:none}
+  .referral{align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* ───────── FINAL VISUAL REFINEMENT ───────── */
+:root{
+  --bg:#06070b; --bg2:#0a0c12; --card:rgba(15,17,25,.82); --card2:rgba(24,27,39,.82);
+  --line:rgba(255,255,255,.09); --line2:rgba(255,255,255,.18);
+  --text:#f4f4f7; --muted:#a3a8b8; --dim:#70778b;
+  --radius:20px; --shadow:0 24px 70px -32px rgba(104,75,210,.62);
+}
+[data-theme="light"]{
+  --bg:#f7f8fc; --bg2:rgba(255,255,255,.88); --card:rgba(255,255,255,.86); --card2:rgba(245,246,251,.9);
+  --line:rgba(20,25,45,.1); --line2:rgba(20,25,45,.18);
+  --text:#171827; --muted:#5e6476; --dim:#858b9d;
+}
+body{background:var(--bg);letter-spacing:-.01em}
+body::before{background:
+  radial-gradient(820px 480px at 8% -10%,rgba(124,92,246,.2),transparent 62%),
+  radial-gradient(700px 520px at 96% 4%,rgba(34,211,238,.1),transparent 64%),var(--bg)}
+body::after{opacity:.32;background-size:64px 64px}
+.container{width:min(90%,1180px)}
+section{padding:112px 0}
+section+section::before{content:"";position:absolute;top:0;left:50%;width:min(90%,1180px);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--line2),transparent)}
+.nav{background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom-color:color-mix(in srgb,var(--line) 75%,transparent)}
+.nav-in{height:74px}
+.logo{font-size:19px}
+.links{padding:4px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--card) 74%,transparent)}
+.links a{padding:7px 11px;font-size:12px}
+.links a:hover,.links a.active{background:var(--card2)}
+.nav-actions{gap:8px}
+.icon-btn{width:36px;height:36px;border-radius:11px;background:color-mix(in srgb,var(--card) 88%,transparent)}
+.icon-btn:hover{background:var(--card2);transform:translateY(-1px)}
+.btn{border-radius:11px;box-shadow:none}
+.btn-primary{box-shadow:0 12px 30px -16px rgba(139,92,246,.9)}
+.btn-primary:hover{box-shadow:0 18px 34px -16px rgba(139,92,246,.95)}
+.pill{background:color-mix(in srgb,var(--card) 84%,transparent);box-shadow:0 8px 26px -18px rgba(139,92,246,.8)}
+.hero{padding-top:156px}
+.hero-grid{gap:72px}
+.hero-copy{max-width:640px}
+h1{font-size:clamp(2.8rem,6.6vw,5.25rem);line-height:1.02}
+.lead{font-size:1.02rem;line-height:1.8;max-width:590px}
+.cta{margin-top:32px}
+.avatar{width:min(100%,360px)}
+.frame{border-radius:30px;box-shadow:0 28px 80px -34px rgba(0,0,0,.8)}
+.float{border-radius:14px;box-shadow:0 18px 40px -22px rgba(0,0,0,.75)}
+.stats{gap:12px;margin-top:72px}
+.stat{padding:22px;border-radius:16px;background:linear-gradient(145deg,color-mix(in srgb,var(--card) 94%,transparent),color-mix(in srgb,var(--card2) 72%,transparent));transition:transform .25s,border-color .25s}
+.stat:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.stat span{display:block;margin-top:5px}
+.chart-card{padding:24px 24px 13px;background:linear-gradient(145deg,color-mix(in srgb,var(--card) 96%,transparent),color-mix(in srgb,var(--card2) 76%,transparent))}
+.card{background:linear-gradient(145deg,color-mix(in srgb,var(--card) 96%,transparent),color-mix(in srgb,var(--card2) 74%,transparent));box-shadow:0 12px 45px -35px rgba(0,0,0,.9)}
+.card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--accent) 38%,var(--line2))}
+.sec-head{margin-bottom:42px}
+.eyebrow{letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+h2{font-size:clamp(2rem,4vw,3rem);line-height:1.08}
+.sub{line-height:1.7}
+.skill,.prof,.cert{min-height:100%}
+.skill h3,.prof h3,.cert h3{letter-spacing:-.02em}
+.proj{overflow:hidden}
+.win{background:color-mix(in srgb,var(--card2) 72%,transparent);border-bottom-color:var(--line)}
+.proj-body{padding:28px}
+.proj h3{font-size:1.38rem}
+.proj .tag{letter-spacing:.01em}
+.proj-foot{flex-wrap:wrap}
+.case-btn{width:100%;justify-content:center;margin-top:16px;background:transparent}
+.ach{background:linear-gradient(90deg,color-mix(in srgb,var(--card) 96%,transparent),color-mix(in srgb,var(--card2) 72%,transparent))}
+.referral{background:linear-gradient(110deg,color-mix(in srgb,var(--accent) 9%,var(--card)),color-mix(in srgb,var(--accent2) 5%,var(--card)));padding:24px 26px}
+.referral h3{margin-top:10px;font-size:1.08rem}
+.contact-grid{gap:42px}
+.mail{letter-spacing:-.04em}
+input,textarea,select{border-radius:11px;background:color-mix(in srgb,var(--card2) 88%,transparent)}
+input::placeholder,textarea::placeholder{color:var(--dim)}
+footer{background:color-mix(in srgb,var(--bg) 78%,transparent)}
+.modal-backdrop{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.modal{background:linear-gradient(145deg,color-mix(in srgb,var(--card) 98%,transparent),color-mix(in srgb,var(--card2) 86%,transparent));border-color:var(--line2)}
+@media (max-width:980px){
+  .hero{padding-top:126px}
+  .hero-grid{gap:42px}
+}
+@media (max-width:920px){
+  .links{border:0;border-radius:0;padding:14px 5%;background:color-mix(in srgb,var(--bg2) 96%,transparent)}
+}
+@media (max-width:640px){
+  section{padding:82px 0}
+  .hero{padding-top:112px}
+  .hero-grid{gap:24px}
+  .hero-visual{margin-bottom:18px}
+  .about-grid>*,.contact-grid>*{min-width:0}
+  .term pre{white-space:pre-wrap;overflow-wrap:anywhere}
+  .prof .top{flex-direction:column}
+  .verdict{white-space:normal}
+  .stats{margin-top:52px}
+  .stat{padding:17px}
+  .stat b{font-size:1.65rem}
+  .chart-card{padding-inline:15px}
+  .sec-head{margin-bottom:30px}
+  .proj-body{padding:22px}
+  .referral{padding:20px}
+  .referral-actions,.referral-actions .btn{width:100%}
+  .referral-actions .btn{justify-content:center}
+  .nav-actions .btn-sm{padding-inline:11px}
+}
+</style>
+</head>
+
+<body>
+<div class="progress" id="progress"></div>
+
+<!-- ═════════ NAV ═════════ -->
+<header class="nav">
+  <div class="container nav-in">
+    <a href="#home" class="logo" aria-label="Home"><span>&lt;</span>NP<span>/&gt;</span></a>
+    <nav class="links" id="links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#profiles">Profiles</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme" aria-label="Toggle light or dark theme">◐</button>
+      <button class="icon-btn" id="paletteBtn" aria-label="Open quick navigation">⌘</button>
+      <a class="btn btn-sm" href="Neelmani_Pandey_Resume.pdf" download>Resume ↓</a>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ═════════ HERO ═════════ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="pill reveal"><i class="dot"></i> Infosys Specialist Programmer L1 · HackWithInfy 2026</div>
+        <p class="hello reveal" style="--d:.05s">Hi, I’m</p>
+        <h1 class="reveal" style="--d:.1s"><span class="grad">Neelmani Pandey</span></h1>
+        <p class="role reveal" style="--d:.15s"><span class="prompt">&gt;</span> <span id="role"></span><span class="caret"></span></p>
+        <p class="lead reveal" style="--d:.2s">Final-year B.Tech CSE student who builds scalable backends, real-time systems and applied AI, and sharpens it all through competitive programming. Codeforces Candidate Master, LeetCode Guardian, Amazon ML Summer School ’26 scholar.</p>
+        <div class="cta reveal" style="--d:.25s">
+          <a class="btn btn-primary" href="#projects">View Projects →</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+        <div class="socials reveal" style="--d:.3s">
+          <a href="https://github.com/neelmanip-999" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/neelmani-pandey-93499b223/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://codeforces.com/profile/NeelmaniPandey09" target="_blank" rel="noopener">Codeforces ↗</a>
+          <a href="https://leetcode.com/u/neelmani_p999/" target="_blank" rel="noopener">LeetCode ↗</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" style="--d:.2s">
+        <div class="avatar">
+          <div class="ring"></div>
+          <div class="frame">
+            <span class="initials" aria-hidden="true">NP</span>
+            <!-- Put your portrait next to this file as profile.jpg (portrait, ~800×1000 works best) -->
+            <img src="profile.jpg" alt="Portrait of Neelmani Pandey" width="340" height="425" onerror="this.remove()">
+          </div>
+          <div class="float f1"><b>✓</b> Codeforces Candidate Master</div>
+          <div class="float f2"><b>✓</b> Amazon ML Summer School ’26</div>
+          <div class="float f3"><b>✓</b> LeetCode Guardian</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal"><b data-count="2348">2348</b><span>LeetCode max rating</span></div>
+      <div class="stat reveal" style="--d:.07s"><b data-count="2004">2004</b><span>Codeforces peak rating</span></div>
+      <div class="stat reveal" style="--d:.14s"><b data-count="1000" data-suffix="+">1000+</b><span>LeetCode problems solved</span></div>
+      <div class="stat reveal" style="--d:.21s"><b data-count="8.85" data-dec="2">8.85</b><span>CGPA / 10</span></div>
+    </div>
+
+    <div class="card chart-card reveal">
+      <div class="chart-head">
+        <h3>Codeforces rating graph</h3>
+        <div class="kvs">
+          <span class="kv">Peak <b id="cfPeak">2004</b></span>
+          <span class="kv">Current <b id="cfNow">—</b></span>
+          <span class="kv">Contests <b id="cfContests">—</b></span>
+        </div>
+      </div>
+      <svg id="chart" viewBox="0 0 920 320" role="img" aria-label="Codeforces rating over time"></svg>
+      <p class="cap" id="cap">Loading rating history…</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ ABOUT ═════════ -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">// 01 · about</span>
+      <h2>Engineer by craft,<br>competitor by habit.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="card term reveal">
+        <div class="term-bar"><i></i><i></i><i></i><span>neelmani@portfolio:~</span></div>
+<pre><code><span class="t-c">$</span> whoami
+neelmani_pandey
+
+<span class="t-c">$</span> cat profile.json
+{
+  <span class="t-k">"role"</span>: <span class="t-s">"Software Engineer"</span>,
+  <span class="t-k">"education"</span>: <span class="t-s">"B.Tech CSE, GLA University"</span>,
+  <span class="t-k">"graduating"</span>: <span class="t-n">2027</span>,
+  <span class="t-k">"cgpa"</span>: <span class="t-n">8.85</span>,
+  <span class="t-k">"offer"</span>: <span class="t-s">"Infosys SP L1"</span>,
+  <span class="t-k">"focus"</span>: [<span class="t-s">"backend"</span>, <span class="t-s">"concurrency"</span>, <span class="t-s">"genai"</span>],
+  <span class="t-k">"codeforces_peak"</span>: <span class="t-n">2004</span>,
+  <span class="t-k">"leetcode_peak"</span>: <span class="t-n">2348</span>
+}
+
+<span class="t-c">$</span> echo $STATUS
+shipping + solving<span class="caret"></span></code></pre>
+      </div>
+
+      <div class="about-copy reveal" style="--d:.1s">
+        <p>I’m a final-year Computer Science student at <strong>GLA University</strong> with a <strong>CGPA of 8.85/10</strong>. I like problems where correctness under pressure matters: concurrent systems, race conditions, real-time sync, and algorithms that have to be both right and fast.</p>
+        <p>That mindset took me to <strong>Codeforces Candidate Master</strong>, <strong>LeetCode Guardian</strong>, a <strong>Specialist Programmer offer from Infosys</strong> through HackWithInfy 2026, and a seat in <strong>Amazon ML Summer School 2026</strong>. Right now I’m going deep on the math behind deep learning, LLMs and agentic AI while shipping full-stack products end to end.</p>
+        <div class="facts">
+          <div class="fact"><small>Education</small><span>B.Tech CSE · 2023 – 2027</span></div>
+          <div class="fact"><small>Location</small><span>Mathura, Uttar Pradesh, India</span></div>
+          <div class="fact"><small>Offer in hand</small><span>Infosys Specialist Programmer L1</span></div>
+          <div class="fact"><small>Looking for</small><span>SDE &amp; Applied Scientist roles</span></div>
+        </div>
+        <div class="learning">
+          <h3>// currently exploring</h3>
+          <div class="chips"><span class="chip hot">Distributed Systems</span><span class="chip">Kubernetes</span><span class="chip">LLM Applications</span><span class="chip">Advanced System Design</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ SKILLS ═════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">// 02 · skills</span>
+      <h2>The toolbox.</h2>
+      <p class="sub">From low-level concurrency to LLM pipelines.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card skill reveal">
+        <div class="sk-ico">&lt;/&gt;</div><h3>Languages</h3>
+        <div class="chips"><span class="chip hot">Java</span><span class="chip hot">C++</span><span class="chip hot">Python</span><span class="chip">JavaScript</span><span class="chip">SQL</span></div>
+      </div>
+      <div class="card skill reveal" style="--d:.07s">
+        <div class="sk-ico">{ }</div><h3>Backend &amp; Web</h3>
+        <div class="chips"><span class="chip hot">MERN Stack</span><span class="chip hot">Spring Boot</span><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">React.js</span><span class="chip">REST API Design</span><span class="chip">WebRTC</span><span class="chip">Socket.io</span></div>
+      </div>
+      <div class="card skill reveal" style="--d:.14s">
+        <div class="sk-ico">λ</div><h3>AI / ML</h3>
+        <div class="chips"><span class="chip hot">Generative AI</span><span class="chip hot">LLMs</span><span class="chip hot">Agentic AI</span><span class="chip">Machine Learning</span><span class="chip">Deep Neural Networks</span><span class="chip">XGBoost</span><span class="chip">scikit-learn</span></div>
+      </div>
+      <div class="card skill span2 reveal">
+        <div class="sk-ico">⌘</div><h3>Core CS</h3>
+        <div class="chips"><span class="chip hot">Data Structures &amp; Algorithms</span><span class="chip hot">Multithreading &amp; Concurrency</span><span class="chip">Operating Systems</span><span class="chip">Computer Networks</span><span class="chip">DBMS</span><span class="chip">OOP</span><span class="chip">Design Patterns</span><span class="chip">System Design</span><span class="chip">Mutex · Semaphore · Condition Variables</span></div>
+      </div>
+      <div class="card skill reveal" style="--d:.07s">
+        <div class="sk-ico">▤</div><h3>Databases &amp; Tools</h3>
+        <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Linux</span><span class="chip">Git</span><span class="chip">Postman</span><span class="chip">Test Automation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ PROFILES ═════════ -->
+<section id="profiles">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">// 03 · competitive programming</span>
+      <h2>Proof of work,<br>on public leaderboards.</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card prof lc reveal">
+        <div class="top"><div><h3>LeetCode</h3><span class="handle">@neelmani_p999</span></div><span class="verdict v-gold">Guardian</span></div>
+        <div class="big">2348</div><span class="handle">max contest rating</span>
+        <div class="mini"><div><small>Badge</small><b>Guardian</b></div><div><small>Solved</small><b>1,000+</b></div></div>
+        <div class="bar"><i data-w="78.3%"></i></div>
+        <a class="link" href="https://leetcode.com/u/neelmani_p999/" target="_blank" rel="noopener">View profile <span>↗</span></a>
+      </div>
+
+      <div class="card prof cf reveal" style="--d:.07s">
+        <div class="top"><div><h3>Codeforces</h3><span class="handle">@NeelmaniPandey09</span></div><span class="verdict v-vio">Candidate Master</span></div>
+        <div class="big">2004</div><span class="handle">peak rating</span>
+        <div class="mini"><div><small>Rank</small><b>Candidate Master</b></div><div><small>Tier</small><b>1900 – 2099</b></div></div>
+        <div class="scale" aria-label="Rating scale with marker at 2004"><i></i></div>
+        <div class="scale-lbl"><span>800</span><span>1600</span><span>2400</span><span>3200</span></div>
+        <a class="link" href="https://codeforces.com/profile/NeelmaniPandey09" target="_blank" rel="noopener">View profile <span>↗</span></a>
+      </div>
+
+      <div class="card prof gh reveal" style="--d:.14s">
+        <div class="top"><div><h3>GitHub</h3><span class="handle">@neelmanip-999</span></div><span class="verdict v-cy">Open source</span></div>
+        <div class="big">&lt;/&gt;</div><span class="handle">projects, source &amp; experiments</span>
+        <div class="mini"><div><small>Featured</small><b>IntervueAI</b></div><div><small>Also</small><b>HealthBridge</b></div></div>
+        <div class="chips"><span class="chip">React</span><span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">Java</span></div>
+        <a class="link" href="https://github.com/neelmanip-999" target="_blank" rel="noopener">View profile <span>↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ EXPERIENCE ═════════ -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">// 04 · experience</span>
+      <h2>Where I’ve been learning.</h2>
+    </div>
+    <div class="card exp reveal">
+      <div class="exp-meta"><small>Jul 2026 – Aug 2026</small><span>Remote</span></div>
+      <div>
+        <h3>Machine Learning Scholar — Amazon ML Summer School 2026</h3>
+        <ul>
+          <li>Selected for a nationally competitive 8-module program led by Amazon Scientists, bridging core mathematical theory with real-world industry applications.</li>
+          <li>Implementing a math-first approach to Deep Neural Networks, while specializing in advanced architectures including Generative AI, LLMs and Sequential Learning for enterprise-scale systems.</li>
+        </ul>
+        <div class="chips"><span class="chip hot">Deep Neural Networks</span><span class="chip">Generative AI</span><span class="chip">LLMs</span><span class="chip">Sequential Learning</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ PROJECTS ═════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">// 05 · projects</span>
+      <h2>Things I’ve built<br>and shipped.</h2>
+    </div>
+    <div class="grid-2">
+
+      <article class="card proj reveal">
+        <div class="win"><i></i><i></i><i></i><span>intervueai / platform</span></div>
+        <div class="proj-body">
+          <div class="proj-top"><h3>IntervueAI</h3><span class="verdict v-cy">Jan – Mar 2026</span></div>
+          <p class="tag">AI-Powered Technical Interview Platform</p>
+          <div class="metrics"><span class="metric">50+ REST endpoints</span><span class="metric">WebRTC video</span><span class="metric">Lock-free CRDT sync</span></div>
+          <ul>
+            <li>Independently architected a cloud-connected collaborative interview platform with WebRTC video and real-time coding via Monaco Editor.</li>
+            <li>Built an automated test-execution and judging pipeline on the Piston API to validate submissions against test cases in sandboxed environments across multiple languages.</li>
+            <li>Designed concurrency control for real-time state sync using Yjs CRDTs, resolving race conditions across concurrent multi-user edits without locks, plus a GenAI pipeline for instant interview feedback.</li>
+          </ul>
+          <div class="chips" style="margin-bottom:20px"><span class="chip">React 19</span><span class="chip">Node.js</span><span class="chip">Yjs CRDT</span><span class="chip">Groq LLaMA-3.3-70B</span><span class="chip">Stream SDK</span><span class="chip">Piston API</span></div>
+          <div class="proj-foot">
+            <a class="btn btn-primary btn-sm" href="https://intervue-ai-topaz.vercel.app/" target="_blank" rel="noopener">Live demo ↗</a>
+            <a class="btn btn-sm" href="https://github.com/neelmanip-999/IntervueAI" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+          <button class="btn btn-sm case-btn" type="button" data-case="intervue">Read system design case study →</button>
+        </div>
+      </article>
+
+      <article class="card proj reveal" style="--d:.1s">
+        <div class="win"><i></i><i></i><i></i><span>healthbridge / ecosystem</span></div>
+        <div class="proj-body">
+          <div class="proj-top"><h3>HealthBridge</h3><span class="verdict v-gold">Top 10 / 200+ teams</span></div>
+          <p class="tag">AI Healthcare Ecosystem · Aug – Dec 2025</p>
+          <div class="metrics"><span class="metric">60+ REST APIs</span><span class="metric">&lt;10ms inference</span><span class="metric">Role-based access</span></div>
+          <ul>
+            <li>Led a cross-functional team to build a centralized MERN-based telemedicine ecosystem with real-time doctor consultations, SOS alerts and role-based management dashboards.</li>
+            <li>Architected a polymorphic MongoDB data graph and validated role-based access through targeted test scenarios, blocking IDOR vulnerabilities via strict ownership filters.</li>
+            <li>Deployed a dual-paradigm AI layer: XGBoost for disease prediction with sub-10ms inference latency, plus a LLaMA-powered medical chatbot for symptom analysis.</li>
+          </ul>
+          <div class="chips" style="margin-bottom:20px"><span class="chip">Node.js</span><span class="chip">Flask</span><span class="chip">MongoDB</span><span class="chip">Socket.io</span><span class="chip">XGBoost</span><span class="chip">scikit-learn</span><span class="chip">LLaMA-3.1-8B</span></div>
+          <div class="proj-foot">
+            <a class="btn btn-primary btn-sm" href="https://health-bridge-ai-healthcare-l6s9.vercel.app/" target="_blank" rel="noopener">Live demo ↗</a>
+            <a class="btn btn-sm" href="https://github.com/neelmanip-999/HealthBridge-AI-Healthcare" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+          <button class="btn btn-sm case-btn" type="button" data-case="healthbridge">Read system design case study →</button>
+        </div>
+      </article>
+
+      <article class="card proj reveal" style="--d:.2s">
+        <div class="win"><i></i><i></i><i></i><span>chronosdag / engine</span></div>
+        <div class="proj-body">
+          <div class="proj-top"><h3>ChronosDAG</h3><span class="verdict v-vio">Java systems</span></div>
+          <p class="tag">Thread-safe DAG execution engine</p>
+          <div class="metrics"><span class="metric">Topological scheduling</span><span class="metric">Thread pools</span><span class="metric">Deadlock-aware</span></div>
+          <ul>
+            <li>Designed a Java execution engine that schedules dependent tasks through a directed acyclic graph while maximizing safe parallelism.</li>
+            <li>Used bounded worker pools, synchronization primitives and dependency tracking to preserve correctness under concurrent execution.</li>
+          </ul>
+          <div class="chips" style="margin-bottom:20px"><span class="chip hot">Java</span><span class="chip">Concurrency</span><span class="chip">DAG</span><span class="chip">Thread Pools</span></div>
+          <div class="proj-foot"><button class="btn btn-primary btn-sm case-btn" type="button" data-case="chronos">Read system design case study →</button></div>
+        </div>
+      </article>
+    </div>
+    <div class="notes">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// engineering notes</span>
+        <h2>How I think about hard problems.</h2>
+      </div>
+      <div class="grid-3">
+        <button class="card note-card reveal" type="button" data-case="crdt"><h3>Concurrent edits without locks</h3><p>Why Yjs CRDTs are a practical fit for collaborative coding.</p><span class="link">Read note →</span></button>
+        <button class="card note-card reveal" type="button" data-case="dag"><h3>Thread-safe DAG execution</h3><p>Scheduling dependencies while keeping workers busy and safe.</p><span class="link">Read note →</span></button>
+        <button class="card note-card reveal" type="button" data-case="inference"><h3>Fast inference, careful trade-offs</h3><p>When a small tabular model beats a large language model.</p><span class="link">Read note →</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ ACHIEVEMENTS + CERTS ═════════ -->
+<section id="achievements">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">// 06 · achievements</span>
+      <h2>Verdict: Accepted.</h2>
+    </div>
+
+    <div class="card ach reveal"><span class="verdict v-ac">Accepted</span><div><h3>HackWithInfy 2026</h3><p>National-level contest — secured the Specialist Programmer (SP) L1 offer from Infosys.</p></div><span class="when">2026</span></div>
+    <div class="card ach reveal"><span class="verdict v-gold">Rank 23</span><div><h3>BitShift 2026 · IIT Madras × Jane Street</h3><p>Global Rank 23 out of 1,000+ participants.</p></div><span class="when">2026</span></div>
+    <div class="card ach reveal"><span class="verdict v-vio">Semifinalist</span><div><h3>Google The Big Code 2026</h3><p>Advanced to the Semifinals, ranking Top 1,500 among 100,000+ participants nationwide.</p></div><span class="when">2026</span></div>
+    <div class="card ach reveal"><span class="verdict v-vio">Semifinalist</span><div><h3>Flipkart GRiD 8.0</h3><p>Progressed to Round 3 as a semifinalist in the national engineering hackathon.</p></div><span class="when">2025</span></div>
+    <div class="card ach reveal"><span class="verdict v-cy">Selected</span><div><h3>Amazon ML Summer School 2026</h3><p>Chosen for a nationally competitive 8-module program led by Amazon Scientists.</p></div><span class="when">2026</span></div>
+
+    <h3 class="sub-h reveal">// certifications</h3>
+    <div class="grid-3">
+      <a class="card cert reveal" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=EB82692A93FE30B771ACE1D0EEA5525FF4906B872B2DA62A1C15F96304D4D361" target="_blank" rel="noopener">
+        <small>Oracle</small><h3>Oracle Cloud Infrastructure 2025 AI Foundations Associate</h3><span class="link">View badge ↗</span>
+      </a>
+      <a class="card cert reveal" style="--d:.07s" href="https://drive.google.com/file/d/1AQ4TnDInASVC30aOcYNCG8_ZGXSdXZVH/view" target="_blank" rel="noopener">
+        <small>Coding Blocks</small><h3>Python Machine Learning</h3><span class="link">View certificate ↗</span>
+      </a>
+      <a class="card cert reveal" style="--d:.14s" href="https://drive.google.com/file/d/1bCCExmTndPH6dZ_mIn9Dp174ts0kqesU/view" target="_blank" rel="noopener">
+        <small>Atlassian</small><h3>Agile Project Management Professional Certificate</h3><span class="link">View certificate ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ CONTACT ═════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">// 07 · contact</span>
+      <h2>Let’s build something sharp.</h2>
+      <p class="sub">Open to SDE and Applied Scientist conversations, collaborations and good problems.</p>
+    </div>
+    <div class="card referral reveal">
+      <div>
+        <span class="verdict v-vio">Referral ready</span>
+        <h3>Know a team building scalable backends or applied AI?</h3>
+        <p>Copy a pre-formatted referral packet with my resume link, focus areas and measurable highlights.</p>
+      </div>
+      <div class="referral-actions">
+        <button type="button" class="btn btn-primary btn-sm" id="copyReferralBtn">Copy referral packet</button>
+        <a class="btn btn-sm" href="Neelmani_Pandey_Resume.pdf" target="_blank" rel="noopener">View resume PDF ↗</a>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="sub" style="margin-top:0">Fastest way to reach me:</p>
+        <a class="mail grad" href="mailto:neelmanipandey45@gmail.com">neelmanipandey45@gmail.com</a>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/neelmani-pandey-93499b223/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com/neelmanip-999" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://codeforces.com/profile/NeelmaniPandey09" target="_blank" rel="noopener">Codeforces ↗</a>
+          <a href="https://leetcode.com/u/neelmani_p999/" target="_blank" rel="noopener">LeetCode ↗</a>
+        </div>
+      </div>
+      <form class="card reveal" id="form" style="--d:.1s">
+        <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email" placeholder="you@company.com"></label>
+        <label>Topic<select name="topic">
+          <option value="SDE / AI role opportunity">SDE / AI role opportunity</option>
+          <option value="Referral / team introduction">Referral / team introduction</option>
+          <option value="Engineering / project discussion">Engineering / project discussion</option>
+        </select></label>
+        <label>Message<textarea name="message" required placeholder="What are you working on?"></textarea></label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button class="btn btn-primary" type="submit" id="submitBtn">Send message →</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="modal-backdrop" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <article class="modal">
+    <div class="modal-head"><h2 id="modalTitle"></h2><button class="close-btn" type="button" id="closeModal" aria-label="Close dialog">×</button></div>
+    <div id="modalBody"></div>
+  </article>
+</div>
+<div class="modal-backdrop" id="paletteModal" role="dialog" aria-modal="true" aria-label="Quick navigation">
+  <div class="modal palette">
+    <div class="modal-head"><h2>Quick navigation</h2><span class="key-hint">Esc to close</span></div>
+    <input id="paletteSearch" type="search" placeholder="Search sections..." aria-label="Search sections">
+    <div id="paletteLinks">
+      <a href="#projects">Projects &amp; case studies</a><a href="#profiles">Proof of work</a><a href="#achievements">Achievements</a><a href="#contact">Contact &amp; referrals</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <span>© <span id="year">2026</span> Neelmani Pandey</span>
+    <span>Designed &amp; built by hand · HTML · CSS · JS</span>
+  </div>
+</footer>
+
+<a href="#home" class="icon-btn to-top" id="toTop" aria-label="Back to top">↑</a>
+
+<script>
+(() => {
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const once = (el, cb, threshold = .15) => {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { io.disconnect(); cb(e.target); }
+    }), { threshold });
+    io.observe(el);
+  };
+
+  /* Theme */
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  $('#theme').addEventListener('click', () => {
+    const n = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = n;
+    try { localStorage.setItem('theme', n); } catch (e) {}
+  });
+
+  /* Mobile menu */
+  const links = $('#links'), mb = $('#menuBtn');
+  mb.addEventListener('click', () => {
+    const o = links.classList.toggle('open');
+    mb.setAttribute('aria-expanded', o);
+  });
+  $$('.links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); mb.setAttribute('aria-expanded', false); }));
+
+  /* Scroll progress + back-to-top */
+  const prog = $('#progress'), top = $('#toTop');
+  addEventListener('scroll', () => {
+    const h = root;
+    prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    top.classList.toggle('show', h.scrollTop > 700);
+  }, { passive: true });
+
+  /* Reveal on scroll */
+  const rv = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); rv.unobserve(e.target); }
+  }), { threshold: .12 });
+  $$('.reveal').forEach(el => rv.observe(el));
+
+  /* Scroll-spy */
+  const navA = $$('.links a');
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  $$('main section[id]').forEach(s => spy.observe(s));
+
+  /* Card spotlight */
+  $$('.card').forEach(c => c.addEventListener('pointermove', e => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--x', (e.clientX - r.left) + 'px');
+    c.style.setProperty('--y', (e.clientY - r.top) + 'px');
+  }));
+
+  /* Count-up */
+  $$('[data-count]').forEach(el => {
+    const end = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || '';
+    if (reduce) return;
+    el.textContent = (0).toFixed(dec) + suf;
+    once(el, () => {
+      const t0 = performance.now(), dur = 1700;
+      const tick = t => {
+        const p = Math.min((t - t0) / dur, 1), v = end * (1 - Math.pow(1 - p, 3));
+        el.textContent = v.toFixed(dec) + suf;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, .6);
+  });
+
+  /* Typing role */
+  const roles = ['Software Engineer', 'Competitive Programmer', 'Backend & Concurrency Engineer', 'GenAI Builder'];
+  const rEl = $('#role');
+  if (reduce) { rEl.textContent = roles[0]; }
+  else {
+    let ri = 0, ci = 0, del = false;
+    (function type() {
+      const w = roles[ri];
+      ci += del ? -1 : 1;
+      rEl.textContent = w.slice(0, ci);
+      let d = del ? 32 : 68;
+      if (!del && ci === w.length) { del = true; d = 1700; }
+      else if (del && ci === 0) { del = false; ri = (ri + 1) % roles.length; d = 320; }
+      setTimeout(type, d);
+    })();
+  }
+
+  /* LeetCode bar */
+  $$('.bar i').forEach(i => once(i, () => i.style.width = i.dataset.w, .5));
+
+  /* ─── Codeforces rating graph ───
+     Tries the live Codeforces API first. If the browser can't reach it, it falls back to FALLBACK.
+     Replace FALLBACK with your real post-contest ratings (oldest → newest) so it's always accurate offline. */
+  const FALLBACK = [800, 1010, 1190, 1340, 1290, 1480, 1590, 1560, 1730, 1840, 1800, 1930, 2004, 1960];
+  const BANDS = [[0,1200,'#808080'],[1200,1400,'#008000'],[1400,1600,'#03a89e'],[1600,1900,'#2f5bff'],[1900,2100,'#b100b1'],[2100,2400,'#ff8c00'],[2400,4000,'#ff2d2d']];
+
+  async function loadRating() {
+    const ctrl = new AbortController(), to = setTimeout(() => ctrl.abort(), 6000);
+    try {
+      const r = await fetch('https://codeforces.com/api/user.rating?handle=NeelmaniPandey09', { signal: ctrl.signal });
+      const j = await r.json();
+      if (j.status !== 'OK' || !j.result.length) throw new Error('empty');
+      return { live: true, pts: j.result.map(x => ({ r: x.newRating, t: x.ratingUpdateTimeSeconds, n: x.contestName })) };
+    } catch (e) {
+      return { live: false, pts: FALLBACK.map(r => ({ r })) };
+    } finally { clearTimeout(to); }
+  }
+
+  function drawChart({ pts, live }) {
+    const svg = $('#chart'), W = 920, H = 320, L = 48, R = 18, T = 20, B = 30;
+    const rs = pts.map(p => p.r), mx = Math.max(...rs), mn = Math.min(...rs);
+    const lo = Math.floor((mn - 150) / 200) * 200, hi = Math.ceil((mx + 150) / 200) * 200;
+    const X = i => L + i * (W - L - R) / Math.max(pts.length - 1, 1);
+    const Y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+    const pk = rs.indexOf(mx);
+
+    let s = `<defs>
+      <linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+      <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".35"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient>
+    </defs>`;
+
+    BANDS.forEach(([a, b, c]) => {
+      if (a < hi && b > lo) {
+        const y1 = Y(Math.min(b, hi)), y2 = Y(Math.max(a, lo));
+        s += `<rect x="${L}" y="${y1}" width="${W - L - R}" height="${y2 - y1}" fill="${c}" opacity=".08"/>`;
+      }
+    });
+    for (let v = lo; v <= hi; v += 200)
+      s += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" opacity=".08"/><text class="ax" x="${L - 8}" y="${Y(v) + 3}" text-anchor="end">${v}</text>`;
+
+    const line = pts.map((p, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(p.r).toFixed(1)}`).join(' ');
+    s += `<path class="area" d="${line} L${X(pts.length - 1).toFixed(1)} ${H - B} L${L} ${H - B}Z" fill="url(#ag)"/>`;
+    s += `<path id="ln" d="${line}" fill="none" stroke="url(#lg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+
+    pts.forEach((p, i) => {
+      if (pts.length <= 70 || i === pk) {
+        const isPk = i === pk;
+        s += `<circle cx="${X(i).toFixed(1)}" cy="${Y(p.r).toFixed(1)}" r="${isPk ? 6 : 3}" fill="${isPk ? '#fbbf24' : 'var(--card)'}" stroke="${isPk ? '#fbbf24' : 'url(#lg)'}" stroke-width="2"><title>${p.n ? p.n + ' — ' : ''}${p.r}</title></circle>`;
+      }
+    });
+    const px = X(pk), anchor = px > W - 90 ? 'end' : px < L + 60 ? 'start' : 'middle';
+    s += `<text class="pk" x="${px}" y="${Y(mx) - 13}" text-anchor="${anchor}">Peak ${mx}</text>`;
+    if (live) {
+      const y0 = new Date(pts[0].t * 1000).getFullYear(), y1 = new Date(pts[pts.length - 1].t * 1000).getFullYear();
+      s += `<text class="ax" x="${L}" y="${H - 8}">${y0}</text><text class="ax" x="${W - R}" y="${H - 8}" text-anchor="end">${y1}</text>`;
+    }
+    svg.innerHTML = s;
+
+    $('#cfPeak').textContent = mx;
+    $('#cfNow').textContent = live ? rs[rs.length - 1] : '—';
+    $('#cfContests').textContent = live ? pts.length : '—';
+    $('#cap').textContent = live
+      ? 'Live from the Codeforces API · rating after each rated contest · coloured bands are rank tiers'
+      : 'Sample curve (live data unavailable) · peak 2004 · coloured bands are rank tiers';
+
+    const ln = $('#ln'), len = ln.getTotalLength(), area = $('.area', svg);
+    if (reduce) { area.classList.add('show'); return; }
+    ln.style.strokeDasharray = len; ln.style.strokeDashoffset = len;
+    once(svg, () => {
+      ln.style.transition = 'stroke-dashoffset 2.2s cubic-bezier(.3,.7,.2,1)';
+      ln.style.strokeDashoffset = 0;
+      area.classList.add('show');
+    }, .3);
+  }
+  loadRating().then(drawChart);
+
+  /* Case studies, engineering notes and referral packet */
+  const caseStudies = {
+    intervue: {
+      title: 'IntervueAI · collaborative interview platform',
+      html: '<h3>Architecture</h3><p>React and Monaco provide the client experience; WebRTC handles video; Yjs CRDTs synchronize editor state; Node.js coordinates sessions and the Piston API executes submissions in isolated sandboxes.</p><h3>Key decision</h3><p>CRDTs allow concurrent edits to converge without a central lock or a fragile last-write-wins strategy. The judging pipeline remains separate from the collaboration path so slow or failed executions cannot block editing.</p><h3>Failure handling</h3><ul><li>Sandboxed execution keeps untrusted code outside the application process.</li><li>Client state can reconnect and converge from shared updates.</li><li>AI feedback is an asynchronous enhancement, not a prerequisite for submitting code.</li></ul>',
+      diagram: '<details class="architecture"><summary>View architecture diagram</summary><svg viewBox="0 0 620 120" role="img" aria-label="IntervueAI architecture"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z"/></marker></defs><rect x="10" y="40" width="120" height="40"/><text x="28" y="65">React + Monaco</text><rect x="190" y="40" width="120" height="40"/><text x="220" y="65">Node.js API</text><rect x="370" y="10" width="110" height="40"/><text x="394" y="35">Yjs CRDT</text><rect x="370" y="70" width="110" height="40"/><text x="390" y="95">Piston API</text><path d="M130 60 H190"/><path d="M310 55 H370"/><path d="M310 65 H370"/></svg></details>'
+    },
+    healthbridge: {
+      title: 'HealthBridge · secure telemedicine ecosystem',
+      html: '<h3>Architecture</h3><p>A MERN platform connects role-based dashboards, real-time consultations and SOS workflows through Node.js, Socket.io and MongoDB, with Flask-backed inference services for disease prediction and an LLM assistant.</p><h3>Key decision</h3><p>Ownership checks are enforced at the database query boundary, not only in the UI. Every resource lookup combines the resource identifier with the authenticated user or role scope, preventing IDOR-style access.</p><h3>Trade-off</h3><p>XGBoost handles predictable tabular inference with sub-10ms latency, while the LLM is reserved for conversational symptom exploration where flexible language understanding is valuable.</p>',
+      diagram: '<details class="architecture"><summary>View architecture diagram</summary><svg viewBox="0 0 620 120" role="img" aria-label="HealthBridge architecture"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z"/></marker></defs><rect x="10" y="40" width="130" height="40"/><text x="32" y="65">Role dashboards</text><rect x="210" y="40" width="130" height="40"/><text x="232" y="65">Node + Socket.io</text><rect x="420" y="10" width="120" height="40"/><text x="448" y="35">MongoDB</text><rect x="420" y="70" width="120" height="40"/><text x="442" y="95">Flask + ML</text><path d="M140 60 H210"/><path d="M340 55 H420"/><path d="M340 65 H420"/></svg></details>'
+    },
+    chronos: {
+      title: 'ChronosDAG · thread-safe execution engine',
+      html: '<h3>Architecture</h3><p>Tasks form a directed acyclic graph. Dependency counts identify runnable work, a bounded worker pool executes it, and completion events release downstream tasks.</p><h3>Correctness</h3><p>Shared dependency state is updated atomically and workers never wait while holding a dependency lock. Cycle validation happens before execution, keeping the runtime focused on scheduling rather than recovery from invalid graphs.</p><h3>Interview signal</h3><p>The design demonstrates topological reasoning, controlled parallelism, failure propagation and the practical boundaries between locks, queues and worker pools.</p>',
+      diagram: '<details class="architecture"><summary>View architecture diagram</summary><svg viewBox="0 0 620 120" role="img" aria-label="ChronosDAG architecture"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z"/></marker></defs><rect x="10" y="40" width="120" height="40"/><text x="34" y="65">DAG validator</text><rect x="200" y="40" width="140" height="40"/><text x="224" y="65">Ready queue</text><rect x="420" y="40" width="130" height="40"/><text x="442" y="65">Worker pool</text><path d="M130 60 H200"/><path d="M340 60 H420"/></svg></details>'
+    },
+    crdt: {
+      title: 'Engineering note · concurrent edits without locks',
+      html: '<p>Collaborative editors need convergence, not simply fast writes. Yjs CRDTs represent edits as mergeable operations, allowing users to type concurrently and still arrive at the same document state after updates are exchanged.</p><h3>Practical boundary</h3><p>CRDT synchronization solves shared editor state; it does not replace authorization, persistence or execution isolation. Those concerns stay behind explicit service boundaries.</p>'
+    },
+    dag: {
+      title: 'Engineering note · thread-safe DAG execution',
+      html: '<p>A DAG scheduler can keep workers busy by running every task whose dependency count reaches zero. The hard part is making the transition from running to complete atomic so downstream work is released exactly once.</p><h3>Design rule</h3><p>Validate cycles up front, use bounded workers, and make failure propagation explicit. Unlimited threads only move pressure from CPU to memory and makes shutdown behavior harder to reason about.</p>'
+    },
+    inference: {
+      title: 'Engineering note · fast inference, careful trade-offs',
+      html: '<p>Model choice follows the shape of the problem. For structured health data, a compact XGBoost model can provide predictable, sub-10ms inference; an LLM is better reserved for natural-language interaction where latency and cost are acceptable.</p><h3>Takeaway</h3><p>Production AI is often a routing problem: use the smallest reliable model for deterministic work and introduce generative systems only where they add clear user value.</p>'
+    }
+  };
+  const caseModal = $('#caseModal'), modalTitle = $('#modalTitle'), modalBody = $('#modalBody');
+  const closeCaseModal = () => caseModal.classList.remove('open');
+  $$('[data-case]').forEach(btn => btn.addEventListener('click', () => {
+    const item = caseStudies[btn.dataset.case];
+    if (!item) return;
+    modalTitle.textContent = item.title;
+    modalBody.innerHTML = item.html + (item.diagram || '');
+    caseModal.classList.add('open');
+  }));
+  $('#closeModal').addEventListener('click', closeCaseModal);
+  caseModal.addEventListener('click', e => { if (e.target === caseModal) closeCaseModal(); });
+
+  const packet = `Candidate: Neelmani Pandey (B.Tech CSE '27, CGPA: 8.85/10)
+Email: neelmanipandey45@gmail.com
+Portfolio: ${location.href}
+Target roles: Software Engineer / Backend / Applied AI
+
+Highlights:
+• Codeforces Candidate Master (2004 peak), LeetCode Guardian (2348 max, 1000+ solved).
+• Amazon ML Summer School '26 Scholar; Infosys Specialist Programmer L1 offer holder via HackWithInfy '26.
+• Built IntervueAI with WebRTC, Yjs CRDT collaboration and Piston sandboxed execution.
+• Built HealthBridge with 60+ REST APIs, RBAC ownership filters and sub-10ms XGBoost inference.`;
+  $('#copyReferralBtn').addEventListener('click', async e => {
+    const button = e.currentTarget;
+    try {
+      await navigator.clipboard.writeText(packet);
+      const original = button.textContent;
+      button.textContent = 'Copied referral packet ✓';
+      setTimeout(() => { button.textContent = original; }, 2500);
+    } catch (error) {
+      console.error('Unable to copy referral packet', error);
+      button.textContent = 'Copy failed — select manually';
+      setTimeout(() => { button.textContent = 'Copy referral packet'; }, 2500);
+    }
+  });
+
+  /* Keyboard command palette */
+  const paletteModal = $('#paletteModal'), paletteSearch = $('#paletteSearch'), paletteLinks = $('#paletteLinks');
+  const closePalette = () => paletteModal.classList.remove('open');
+  const openPalette = () => { paletteModal.classList.add('open'); paletteSearch.value = ''; paletteSearch.focus(); };
+  $('#paletteBtn').addEventListener('click', openPalette);
+  paletteModal.addEventListener('click', e => { if (e.target === paletteModal) closePalette(); });
+  paletteSearch.addEventListener('input', () => {
+    const query = paletteSearch.value.toLowerCase();
+    $$('a', paletteLinks).forEach(a => { a.hidden = !a.textContent.toLowerCase().includes(query); });
+  });
+  addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openPalette(); }
+    if (e.key === 'Escape') { closePalette(); closeCaseModal(); }
+  });
+  $$('#paletteLinks a').forEach(a => a.addEventListener('click', closePalette));
+
+  /* Contact form → Formspree sends the message without opening a mail client */
+  $('#form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const button = $('#submitBtn');
+    const status = $('#formStatus');
+    const formData = new FormData(form);
+    const topic = formData.get('topic');
+    formData.set('_subject', `${topic} · Portfolio contact`);
+    status.className = 'form-status';
+    status.textContent = 'Sending your message…';
+    button.disabled = true;
+    button.textContent = 'Sending…';
+
+    try {
+      const response = await fetch('https://formspree.io/f/mkjjjbgn', {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) throw new Error(`Form submission failed with status ${response.status}`);
+      form.reset();
+      status.className = 'form-status success';
+      status.textContent = 'Message sent — thanks for reaching out. I’ll get back to you soon.';
+    } catch (error) {
+      console.error('Contact form submission failed', error);
+      status.className = 'form-status error';
+      status.textContent = 'Unable to send right now. Please email me directly at neelmanipandey45@gmail.com.';
+    } finally {
+      button.disabled = false;
+      button.textContent = 'Send message →';
+    }
+  });
+
+  $('#year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
